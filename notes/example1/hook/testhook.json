@@ -1,0 +1,7 @@
+{
+    "eventName": "device_count_alert",
+    "url": "http://YOUR_APP_URL/push",
+    "requestType": "POST",
+	"json": true,
+    "mydevices": true
+}
