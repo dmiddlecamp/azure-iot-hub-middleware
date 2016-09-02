@@ -18,7 +18,7 @@ var settings = {
 	particle_client_secret: null,
 
 	azure_device_connString: null,
-
+ 
 	_: null
 };
 
