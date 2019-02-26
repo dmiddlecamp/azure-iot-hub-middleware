@@ -33,10 +33,22 @@ router.post('/push', function(req, res, next) {
 		//    "coreid": [device-id]
 		//}
 
-		var deviceID = req.params.coreid,
-			published_at = req.params.published_at,
-			event_topic = req.params.event,
-			event_contents = req.params.data;
+		var getParam = function(req, name) {
+			if (!req) { return; }
+			else if (req.body && req.body[name]) {     return  req.body[name]; }
+			else if (req.query && req.query[name]) {   return req.query[name]; }
+			else if (req.params && req.params[name]) { return  req.params[name]; }
+		};
+
+		var deviceID = getParam(req, "coreid");
+		var published_at = getParam(req, "published_at") || (new Date() + "");
+		var event_topic = getParam(req, "event");
+		var event_contents = getParam(req, "data");
+
+//
+//			published_at = req.body.published_at || req.query.published_at || req.params.published_at,
+//			event_topic = req.body.event || req.query.event || req.params.event,
+//			event_contents = req.body.data || req.query.data || req.params.data;
 
 		//	var product_id = ,
 		//		product_version = ,
