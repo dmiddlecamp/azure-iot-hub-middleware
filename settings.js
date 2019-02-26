@@ -9,6 +9,8 @@ var settings = {
 	particle_base_url: "https://api.particle.io",
 	mongo_databaseUrl: null,
 
+	unknown_device_connString: null,
+
 
 	particle_org_slug: null,
 	particle_product_slug: null,
@@ -51,6 +53,7 @@ else
 
 		//TODO: REPLACE ME
 		{ name: "azure_device_connString", key: "azure_device_connString" },
+		{ name: "unknown_device_connString", key: "unknown_device_connString" },
 	];
 
 

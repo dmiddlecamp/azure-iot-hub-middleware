@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 var AzureHelper = require('../lib/AzureHelper.js');
+var Database = require('../lib/Database.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
