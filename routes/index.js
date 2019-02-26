@@ -24,31 +24,35 @@ router.get('/test', function(req, res, next) {
 		});
 });
 router.post('/push', function(req, res, next) {
+	try {
+		// the default request
+		//{
+		//    "event": [event-name],
+		//    "data": [event-data],
+		//    "published_at": [timestamp],
+		//    "coreid": [device-id]
+		//}
 
-	// the default request
-	//{
-	//    "event": [event-name],
-	//    "data": [event-data],
-	//    "published_at": [timestamp],
-	//    "coreid": [device-id]
-	//}
+		var deviceID = req.params.coreid,
+			published_at = req.params.published_at,
+			event_topic = req.params.event,
+			event_contents = req.params.data;
 
-	var deviceID = req.params.coreid,
-		published_at = req.params.published_at,
-		event_topic = req.params.event,
-		event_contents = req.params.data;
+		//	var product_id = ,
+		//		product_version = ,
+		//		firmware_version = ;
 
-	//	var product_id = ,
-	//		product_version = ,
-	//		firmware_version = ;
-
-	AzureHelper.sendEvent(deviceID, published_at, event_topic, event_contents)
-		.then(function() {
-			res.send({ ok: true });
-		},
-		function(err) {
-			res.send({ ok: false, error: err });
-		});
+		AzureHelper.sendEvent(deviceID, published_at, event_topic, event_contents)
+			.then(function() {
+				res.send({ ok: true });
+			},
+			function(err) {
+				res.send({ ok: false, error: err });
+			});
+	}
+	catch(ex) {
+		res.send({ok: false, error: ex});
+	}
 });
 
 module.exports = router;
