@@ -51,7 +51,8 @@ router.post('/push', function(req, res, next) {
 			});
 	}
 	catch(ex) {
-		res.send({ok: false, error: ex});
+		console.log("push request failed, ", ex);
+		res.send({ok: false, error: ex, error_data: JSON.stringify(ex, null, 2) });
 	}
 });
 
