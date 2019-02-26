@@ -35,7 +35,7 @@ if (fs.existsSync(overridesFile)) {
 		settings = extend(settings, overridesObj);
 	}
 	catch(ex) {
-		console.error("error opening overrides ", ex);
+		console.log("error opening overrides ", ex);
 	}
 }
 else
